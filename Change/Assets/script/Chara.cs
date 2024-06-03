@@ -6,6 +6,9 @@ public class Chara : MonoBehaviour
 {
     new Rigidbody rigidbody;
     Animator animator;
+    bool pickup = false;
+    float pickcontlol = 1.2f; 
+    float pickTime = 0f; 
 
     void Start()
     {
@@ -15,8 +18,15 @@ public class Chara : MonoBehaviour
 
     private void Update()
     {
-        move();
         pick();
+        if (!pickup)
+        {
+            move();
+        }
+        else
+        {
+            animator.SetBool("Run", false); 
+        }
     }
 
     void move()
@@ -54,13 +64,18 @@ public class Chara : MonoBehaviour
 
     void pick()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             animator.SetBool("Pickup", true);
+            pickup = true;
+            pickTime = Time.time + pickcontlol; 
         }
-        else
+
+
+        if (pickup && Time.time >= pickTime)
         {
             animator.SetBool("Pickup", false);
+            pickup = false;
         }
     }
 }
