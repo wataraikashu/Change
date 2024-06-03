@@ -4,60 +4,63 @@ using UnityEngine;
 
 public class Chara : MonoBehaviour
 {
-
     new Rigidbody rigidbody;
     Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        int Run = Animator.StringToHash("Run");
-
         rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        move(); 
+        move();
+        pick();
     }
 
     void move()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
-            animator.SetBool("Run", true);
-        }
-        else 
-        {
-            animator.SetBool("Run", false);
-        }
+        Vector3 moveDirection = Vector3.zero;
 
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(0.002f, 0, 0);
-            Rotation(0, 90, 0);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(-0.002f, 0, 0);
-            Rotation(0, -90, 0);
-        }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, 0.002f);
-            Rotation(0, 0, 0);
+            moveDirection += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, 0, -0.002f);
-            Rotation(0, -180, 0);
+            moveDirection += Vector3.back;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveDirection += Vector3.left;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveDirection += Vector3.right;
+        }
+
+        if (moveDirection != Vector3.zero)
+        {
+            transform.position += moveDirection.normalized * 0.002f;
+            transform.rotation = Quaternion.LookRotation(moveDirection);
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
         }
     }
 
-    void Rotation(float x, float y, float z)
+    void pick()
     {
-        transform.rotation = Quaternion.Euler(x, y, z);
+        if (Input.GetKey(KeyCode.E))
+        {
+            animator.SetBool("Pickup", true);
+        }
+        else
+        {
+            animator.SetBool("Pickup", false);
+        }
     }
-
 }
