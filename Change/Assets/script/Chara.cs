@@ -25,7 +25,7 @@ public class Chara : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Run", false); 
+            animator.SetBool("Run", false);
         }
     }
 
@@ -66,11 +66,19 @@ public class Chara : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            animator.SetBool("Pickup", true);
-            pickup = true;
-            pickTime = Time.time + pickcontlol; 
-        }
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, transform.forward, out hit, 2.0f))
+            {
+                if (hit.collider.CompareTag("Pickup"))
+                {
 
+                    animator.SetBool("Pickup", true);
+                    hit.collider.gameObject.SetActive(false);
+                    pickup = true;
+                    pickTime = Time.time + pickcontlol;
+                }
+            }
+        }
 
         if (pickup && Time.time >= pickTime)
         {
