@@ -6,14 +6,16 @@ public class Chara : MonoBehaviour
 {
     new Rigidbody rigidbody;
     Animator animator;
+    string pickupturn;
     bool pickup = false;
-    float pickcontlol = 1.2f; 
-    float pickTime = 0f; 
+    float pickcontlol = 1.2f;
+    float pickTime = 0f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        pickupturn = "Pickup";
     }
 
     private void Update()
@@ -67,11 +69,10 @@ public class Chara : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, transform.forward, out hit, 2.0f))
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, transform.forward, out hit, 0.5f))
             {
-                if (hit.collider.CompareTag("Pickup"))
+                if (hit.collider.CompareTag(pickupturn))
                 {
-
                     animator.SetBool("Pickup", true);
                     hit.collider.gameObject.SetActive(false);
                     pickup = true;
@@ -84,6 +85,16 @@ public class Chara : MonoBehaviour
         {
             animator.SetBool("Pickup", false);
             pickup = false;
+            if (pickupturn == "Pickup")
+                pickupturn = "Pickup2";
+            else if (pickupturn == "Pickup2")
+                pickupturn = "Pickup3";
+            else if (pickupturn == "Pickup3")
+                pickupturn = "Pickup4";
+            else if (pickupturn == "Pickup4")
+                pickupturn = "Pickup5";
+            else if (pickupturn == "Pickup5")
+                pickupturn = "None";
         }
     }
 }
