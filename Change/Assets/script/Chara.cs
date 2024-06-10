@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Chara : MonoBehaviour
 {
@@ -94,7 +95,7 @@ public class Chara : MonoBehaviour
             else if (pickupturn == "Pickup4")
                 pickupturn = "Pickup5";
             else if (pickupturn == "Pickup5")
-                pickupturn = "None";
+                SceneManager.LoadScene("Title");
         }
     }
 }
