@@ -5,18 +5,71 @@ using UnityEngine.SceneManagement;
 
 public class Chara : MonoBehaviour
 {
+    public GameObject chopstick;
+    public GameObject soccerboll;
+    public GameObject tire;
+    public GameObject barrel;
     new Rigidbody rigidbody;
     Animator animator;
     string pickupturn;
     bool pickup = false;
     float pickcontlol = 1.2f;
     float pickTime = 0f;
+    List<Vector3> Place = new List<Vector3>();
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         pickupturn = "Pickup";
+
+        RandomObject(chopstick);
+        RandomObject(soccerboll);
+        RandomObject(tire);
+        RandomObject(barrel);
+    }
+
+    void RandomObject(GameObject gameobject)
+    {
+        Vector3 randomPos;
+        do
+        {
+            float posX = Random.Range(-3, 3);
+            float posY = 0;
+            if (gameobject == chopstick)
+            {
+                posY = -1.47f;
+            }
+            else if (gameobject == soccerboll)
+            {
+                posY = -0.88f;
+            }
+            else if (gameobject == tire)
+            {
+                posY = -0.8f;
+            }
+            else if (gameobject == barrel)
+            {
+                posY = -1f;
+            }
+            float posZ = Random.Range(-4, 0);
+            randomPos = new Vector3(posX, posY, posZ);
+        } while (Loopposition(randomPos));
+
+        Instantiate(gameobject, randomPos, Quaternion.identity);
+        Place.Add(randomPos);
+    }
+
+    bool Loopposition(Vector3 pos)
+    {
+        foreach (Vector3 placedPos in Place)
+        {
+            if (Vector3.Distance(placedPos, pos) < 1.5f) 
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void Update()
