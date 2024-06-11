@@ -36,23 +36,27 @@ public class Chara : MonoBehaviour
         {
             float posX = Random.Range(-3, 3);
             float posY = 0;
+            float posZ = 0;
             if (gameobject == chopstick)
             {
                 posY = -1.47f;
+                posZ = -4.2f;
             }
             else if (gameobject == soccerboll)
             {
                 posY = -0.88f;
+                posZ = Random.Range(-4, -3);
             }
             else if (gameobject == tire)
             {
                 posY = -0.8f;
+                posZ = Random.Range(-4, 0);
             }
             else if (gameobject == barrel)
             {
                 posY = -1f;
+                posZ = Random.Range(-4, 0);
             }
-            float posZ = Random.Range(-4, 0);
             randomPos = new Vector3(posX, posY, posZ);
         } while (Loopposition(randomPos));
 
