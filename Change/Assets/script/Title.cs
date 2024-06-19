@@ -9,4 +9,9 @@ public class Title : MonoBehaviour
     {
         SceneManager.LoadScene("game1");
     }
+
+    public void LoadNextScene2()
+    {
+        SceneManager.LoadScene("game2");
+    }
 }
