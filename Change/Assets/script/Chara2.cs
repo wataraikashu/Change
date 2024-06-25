@@ -81,6 +81,11 @@ public class Chara2 : MonoBehaviour
 
     IEnumerator CountDownSpeed()
     {
+        if (animator == null)
+        {
+            yield break;
+        }
+
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2,4));
