@@ -16,15 +16,15 @@ public class Chara2 : MonoBehaviour
 
     int count = 50;
     float enemycount = 0;
-    float countdown = 0.1f;
-    bool fixedcount = false;
-    bool onlycontrol = false; // 80‚ð’´‚¦‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+    float countdown = 0.25f;
+    float speedupcountdown = 0.05f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         currentState = State.Akey;
         UpCount();
+        StartCoroutine(CountDownSpeed());
     }
 
     void Update()
@@ -56,14 +56,6 @@ public class Chara2 : MonoBehaviour
         {
             enemycount = 0;
             CountDown();
-            if (!fixedcount)
-                countdown = Random.Range(0.001f, 0.26f);
-        }
-
-        if (count >= 70 && !onlycontrol)
-        {
-            onlycontrol = true;
-            StartCoroutine(FixedCount());
         }
     }
 
@@ -73,7 +65,7 @@ public class Chara2 : MonoBehaviour
         count++;    
         if(count >= 100)
         {
-            SceneManager.LoadScene("Title");
+            //‘ŠŽè‚ÌTransform‚ð“®‚©‚µ‚½‚¢
         }
     }
 
@@ -87,6 +79,17 @@ public class Chara2 : MonoBehaviour
         }
     }
 
+    IEnumerator CountDownSpeed()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(2,4));
+            countdown = speedupcountdown;
+            yield return new WaitForSeconds(Random.Range(2.5f, 4));
+            countdown = 0.25f;
+        }
+    }
+
     IEnumerator falsebutton()
     {
         Button.SetActive(false);
@@ -96,13 +99,5 @@ public class Chara2 : MonoBehaviour
         Button.SetActive(true);
     }
 
-    IEnumerator FixedCount()
-    {
-        fixedcount = true;
-        countdown = 0.042f;
 
-        yield return new WaitForSeconds(5f);
-
-        fixedcount = false;
-    }
 }
