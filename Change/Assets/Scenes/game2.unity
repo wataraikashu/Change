@@ -404,6 +404,11 @@ MonoBehaviour:
   countdown: 0.25
   speedupcountdown: 0.05
   animator: {fileID: 333859919}
+--- !u!4 &333859922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+  m_PrefabInstance: {fileID: 415297996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &415297996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -583,6 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Count: {fileID: 1150466497}
   Button: {fileID: 752806491}
+  tigerposi: {fileID: 333859922}
 --- !u!1 &752806491
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,11 +13,13 @@ public class Chara2 : MonoBehaviour
     State currentState;
     public Text Count;
     public GameObject Button;
+    public Transform tigerposi;
 
     int count = 50;
     float enemycount = 0;
     float countdown = 0.25f;
     float speedupcountdown = 0.05f;
+    private float move;
 
     void Start()
     {
@@ -57,16 +59,18 @@ public class Chara2 : MonoBehaviour
             enemycount = 0;
             CountDown();
         }
+
+        if (count >= 1 && count <= 100)
+        {
+            move = Mathf.Lerp(0, 200f,count/ 100f);
+            tigerposi.position = new Vector3(move, tigerposi.position.y, tigerposi.position.z);
+        }
     }
 
     void UpCount()
     {
         Count.text = "Count: " + count.ToString();
-        count++;    
-        if(count >= 100)
-        {
-            //‘ŠŽè‚ÌTransform‚ð“®‚©‚µ‚½‚¢
-        }
+        count++;
     }
 
     void CountDown()
