@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Chara : MonoBehaviour
 {
+    public static Chara instance;
+
     public GameObject chopstick;
     public GameObject soccerboll;
     public GameObject tire;
@@ -19,6 +21,8 @@ public class Chara : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         pickupturn = "Pickup";
@@ -152,7 +156,12 @@ public class Chara : MonoBehaviour
             else if (pickupturn == "Pickup4")
                 pickupturn = "Pickup5";
             else if (pickupturn == "Pickup5")
-                SceneManager.LoadScene("Title");
+                NextScene();
         }
+    }
+
+    public static void NextScene()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
