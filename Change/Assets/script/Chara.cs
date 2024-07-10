@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Chara : MonoBehaviour
 {
     public static Chara instance;
+    public static int scenecount = 0;
 
     public GameObject chopstick;
     public GameObject soccerboll;
@@ -162,6 +163,14 @@ public class Chara : MonoBehaviour
 
     public static void NextScene()
     {
-        SceneManager.LoadScene("Title");
+        scenecount++;
+        if (scenecount >= 5)
+        {
+            SceneManager.LoadScene("Title1");
+        }
+        else
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
 }
