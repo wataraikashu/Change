@@ -389,7 +389,12 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
   m_PrefabInstance: {fileID: 415297996}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &333859921
+--- !u!4 &333859922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
+  m_PrefabInstance: {fileID: 415297996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &333859923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,17 +403,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 333859918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb2dd9581c25fc439ef217ed4bc46b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e1873db57309e46a8560aaa7f824ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 0.25
-  speedupcountdown: 0.05
   animator: {fileID: 333859919}
---- !u!4 &333859922 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
-  m_PrefabInstance: {fileID: 415297996}
-  m_PrefabAsset: {fileID: 0}
+  Count: {fileID: 1150466497}
+  Button: {fileID: 752806491}
+  tigerposi: {fileID: 333859922}
 --- !u!1001 &415297996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,7 +484,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100700, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 333859921}
+      addedObject: {fileID: 333859923}
   m_SourcePrefab: {fileID: 100100000, guid: 427f72e3e110e5145bf4956336b40f6f, type: 3}
 --- !u!1 &546173838
 GameObject:
@@ -569,26 +570,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &628051178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8491488182617090888, guid: 703fbf68ff9f73941a42a51133119a8e, type: 3}
-  m_PrefabInstance: {fileID: 1484657276}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &628051179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628051178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e1873db57309e46a8560aaa7f824ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Count: {fileID: 1150466497}
-  Button: {fileID: 752806491}
-  tigerposi: {fileID: 333859922}
 --- !u!1 &752806491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,12 +1362,10 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 39adc888162e828469b3050239d011f7, type: 2}
     m_RemovedComponents:
     - {fileID: 50949065400536663, guid: 703fbf68ff9f73941a42a51133119a8e, type: 3}
+    - {fileID: 7927657382932532282, guid: 703fbf68ff9f73941a42a51133119a8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8491488182617090888, guid: 703fbf68ff9f73941a42a51133119a8e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 628051179}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703fbf68ff9f73941a42a51133119a8e, type: 3}
 --- !u!1 &1526473935
 GameObject:

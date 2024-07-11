@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Chara2 : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     enum State
     {
         Akey, Dkey
@@ -85,17 +85,15 @@ public class Chara2 : MonoBehaviour
 
     IEnumerator CountDownSpeed()
     {
-        if (animator == null)
-        {
-            yield break;
-        }
-
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(2,4));
             countdown = speedupcountdown;
+            animator.SetBool("Run", true);
             yield return new WaitForSeconds(Random.Range(2.5f, 4));
             countdown = 0.25f;
+            animator.SetBool("Run", false);
+
         }
     }
 
