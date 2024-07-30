@@ -13,6 +13,8 @@ public class Title : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         firstSelected.Select();
     }
 
