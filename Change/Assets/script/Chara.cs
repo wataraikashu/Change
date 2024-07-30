@@ -164,7 +164,7 @@ public class Chara : MonoBehaviour
     public static void NextScene()
     {
         scenecount++;
-        if (scenecount >= 5)
+        if (scenecount >= 3)
         {
             SceneManager.LoadScene("Title1");
         }
