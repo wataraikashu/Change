@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game3FadeOut : MonoBehaviour
+public class game3fadeout : MonoBehaviour
 {
+
     public float alpha = 0f;
     public float fadespeed = 1f;
     public float maxAlpha = 0.5f;
     public float second = 0;
+    public GameObject Line;
+
 
 
     private Material fadeMaterial;
@@ -18,6 +21,8 @@ public class Game3FadeOut : MonoBehaviour
         Color color = fadeMaterial.color;
         color.a = alpha;
         fadeMaterial.color = color;
+
+        Line.SetActive(false);
     }
 
     void Update()
@@ -29,6 +34,11 @@ public class Game3FadeOut : MonoBehaviour
             Color color = fadeMaterial.color;
             color.a = alpha;
             fadeMaterial.color = color;
+        }
+
+        if (second >= 5)
+        {
+            Line.SetActive(true);
         }
     }
 }

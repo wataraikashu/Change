@@ -9,6 +9,7 @@ TagManager:
   - Pickup3
   - Pickup4
   - Pickup5
+  - note
   layers:
   - Default
   - TransparentFX
