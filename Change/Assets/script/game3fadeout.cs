@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class Game3Fadeout : MonoBehaviour
+public class game3fadeout : MonoBehaviour
 {
 
     public float alpha = 0f;
@@ -39,6 +41,7 @@ public class Game3Fadeout : MonoBehaviour
         if (second >= 5)
         {
             Line.SetActive(true);
+
         }
     }
 }
