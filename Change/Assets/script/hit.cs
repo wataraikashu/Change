@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class hit : MonoBehaviour
 {
-    private CircleCollider2D circleCollider;
-
+    public CircleCollider2D circleCollider;
+    public Animator animator;
 
     public GameObject gameobject;
     public float speed = 1.6f;
@@ -14,6 +14,8 @@ public class hit : MonoBehaviour
     public float second = 0;
     public string notetag = "note";
     public float radius = 0.5f;
+
+    public bool perfectnotes = false;
 
     void Start()
     {
@@ -49,14 +51,18 @@ public class hit : MonoBehaviour
                 {
                     Debug.Log("ab");
                     float distance = Mathf.Abs(hit.transform.position.x - transform.position.x);
-                    if (distance < 0.05f)
-                        Debug.Log("parfect");
-                    else if (distance < 0.3f)
-                        Debug.Log("good");
-                    else if (distance < 0.6f)
-                        Debug.Log("normal");
-                    else
-                        Debug.Log("not");
+                if (distance < 0.05f && !perfectnotes)
+                {
+                    Debug.Log("parfect");
+                    animator.SetTrigger("perfect");
+                    perfectnotes = true;
+                }
+                else if (distance < 0.3f)
+                    Debug.Log("good");
+                else if (distance < 0.6f)
+                    Debug.Log("normal");
+                else
+                    Debug.Log("not");
                     Destroy(hit.collider.gameObject);
                 }
             }
