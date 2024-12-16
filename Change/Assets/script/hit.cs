@@ -6,6 +6,9 @@ public class hit : MonoBehaviour
 {
     public CircleCollider2D circleCollider;
     public Animator animator;
+    public Animator animator1;
+    public Animator animator2;
+    public Animator animator3;
 
     public GameObject gameobject;
     public float speed = 1.6f;
@@ -16,6 +19,9 @@ public class hit : MonoBehaviour
     public float radius = 0.5f;
 
     public bool perfectnotes = false;
+    public bool goodnotes = false;
+    public bool normalnotes = false;
+    public bool notnotes = false;
 
     void Start()
     {
@@ -51,18 +57,31 @@ public class hit : MonoBehaviour
                 {
                     Debug.Log("ab");
                     float distance = Mathf.Abs(hit.transform.position.x - transform.position.x);
-                if (distance < 0.05f && !perfectnotes)
+                if (distance < 0.075f && !perfectnotes)
                 {
                     Debug.Log("parfect");
                     animator.SetTrigger("perfect");
                     perfectnotes = true;
                 }
-                else if (distance < 0.3f)
+                else if (distance < 0.3f && !goodnotes)
+                {
                     Debug.Log("good");
-                else if (distance < 0.6f)
+                    animator1.SetTrigger("good");
+                    goodnotes = true;
+                }
+                else if (distance < 0.6f && !normalnotes)
+                {
                     Debug.Log("normal");
-                else
+                    animator2.SetTrigger("normal");
+                    normalnotes = true;
+                }
+                else if (!notnotes)
+                {
                     Debug.Log("not");
+                    animator3.SetTrigger("not");
+                    notnotes = true;
+
+                }
                     Destroy(hit.collider.gameObject);
                 }
             }
