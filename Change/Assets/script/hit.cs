@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class hit : MonoBehaviour
@@ -71,6 +72,8 @@ public class hit : MonoBehaviour
     public float radius = 0.1f;
 
     public int count = 0;
+    public int combo = 0;
+    public Text combotext;
 
     void Start()
     {
@@ -206,21 +209,25 @@ public class hit : MonoBehaviour
                         {
                             Debug.Log("parfect");
                             animator.Play("per1", 0, 0f);
+                            combo++;
                         }
                         else if (distance < 0.3f)
                         {
                             Debug.Log("good");
                             animator1.Play("good1", 0, 0f);
+                            combo++;
                         }
                         else if (distance < 0.6f)
                         {
                             Debug.Log("normal");
                             animator2.Play("normal1", 0, 0f);
+                            resetcombo();
                         }
                         else
                         {
                             Debug.Log("not");
                             animator3.Play("not1", 0, 0f);
+                            resetcombo();
                             count++;
                             if (count >= 3)
                             {
@@ -228,6 +235,7 @@ public class hit : MonoBehaviour
                             }
 
                         }
+                        combodayo();
                         Destroy(hit.collider.gameObject);
 
                         break;
@@ -252,20 +260,33 @@ public class hit : MonoBehaviour
 
 
             }
-            void startposition(GameObject obj)
-            {
-                if (obj != null)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
-                }
-            }
+     void startposition(GameObject obj)
+     {
+         if (obj != null)
+         {
+             obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
+         }
+     }
 
-            void gameovercount()
-            {
-                count++;
-                if (count >= 3)
-                {
-                    SceneManager.LoadScene("Title");
-                }
-            }
+     void gameovercount()
+     {
+         count++;
+         if (count >= 3)
+         {
+             SceneManager.LoadScene("Title");
+         }
+     }
+
+    void resetcombo()
+    {
+        combo = 0;
+    }
+
+    void combodayo()
+    {
+        if (combotext != null)
+        {
+            combotext.text =combo.ToString();
         }
+    }
+}

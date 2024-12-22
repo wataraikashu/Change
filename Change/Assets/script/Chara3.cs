@@ -11,6 +11,7 @@ public class Chara3 : MonoBehaviour
     public AudioClip bgm;
     public AudioSource song;
     public bool onemusic = false;
+    public int st3 = 0;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class Chara3 : MonoBehaviour
 
         if (start >= 37.5f)
             {
+            st3++;
                 Chara.NextScene();
             }
     }
