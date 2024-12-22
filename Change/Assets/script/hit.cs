@@ -253,7 +253,8 @@ public class hit : MonoBehaviour
                     {
                         Debug.Log("miss");
                         animator4.Play("miss1", 0, 0f);
-                        gameovercount();
+                resetcombo();
+                gameovercount();
                         Destroy(obj);
                     }
                 }
@@ -280,13 +281,23 @@ public class hit : MonoBehaviour
     void resetcombo()
     {
         combo = 0;
+
+        combodayo();
     }
 
     void combodayo()
     {
         if (combotext != null)
         {
-            combotext.text =combo.ToString();
+            if (combo > 0)
+            {
+                combotext.text = combo.ToString();
+                combotext.enabled = true;
+            }
+            else
+            {
+                combotext.enabled = false;
+            }
         }
     }
 }

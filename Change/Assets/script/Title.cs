@@ -27,4 +27,9 @@ public class Title : MonoBehaviour
     {
         SceneManager.LoadScene("game2");
     }
+
+    public void LoadNextScene3()
+    {
+        SceneManager.LoadScene("game3");
+    }
 }
