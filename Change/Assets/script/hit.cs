@@ -211,13 +211,13 @@ public class hit : MonoBehaviour
                             animator.Play("per1", 0, 0f);
                             combo++;
                         }
-                        else if (distance < 0.3f)
+                        else if (distance < 0.25f)
                         {
                             Debug.Log("good");
                             animator1.Play("good1", 0, 0f);
                             combo++;
                         }
-                        else if (distance < 0.6f)
+                        else if (distance < 0.5f)
                         {
                             Debug.Log("normal");
                             animator2.Play("normal1", 0, 0f);

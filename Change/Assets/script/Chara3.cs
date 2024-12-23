@@ -11,12 +11,15 @@ public class Chara3 : MonoBehaviour
     public AudioClip bgm;
     public AudioSource song;
     public bool onemusic = false;
-    public int st3 = 0;
+    public static int st3 = 0;
+    public Animator songname;
 
     void Start()
     {
         song = gameObject.AddComponent<AudioSource>();
         song.clip = bgm;
+        songname.SetTrigger("songname");
+
     }
 
     void Update()
@@ -32,6 +35,21 @@ public class Chara3 : MonoBehaviour
         {
             song.Play();
             onemusic = true;
+        }
+
+        if (start >= 25.5f)
+        {
+            animator.SetTrigger("dance5");
+        }
+
+        if (start >= 27f)
+        {
+            animator.SetTrigger("dance3");
+        }
+
+        if (start >= 29.2f)
+        {
+            animator.SetTrigger("dance4");
         }
 
         if (start >= 37.5f)
