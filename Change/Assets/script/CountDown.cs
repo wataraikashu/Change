@@ -17,6 +17,7 @@ public class CountDown : MonoBehaviour
     public GameObject button1off;
     public GameObject button2off;
 
+    public static int st2 = 0;
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class CountDown : MonoBehaviour
             }
             else
             {
+                st2++;
                 Chara.NextScene();
             }
         }

@@ -20,6 +20,8 @@ public class Chara : MonoBehaviour
     float pickTime = 0f;
     List<Vector3> Place = new List<Vector3>();
 
+    public static int st1 = 0;
+
     void Start()
     {
         instance = this;
@@ -157,7 +159,10 @@ public class Chara : MonoBehaviour
             else if (pickupturn == "Pickup4")
                 pickupturn = "Pickup5";
             else if (pickupturn == "Pickup5")
+            {
+                st1++;
                 NextScene();
+            }
         }
     }
 
