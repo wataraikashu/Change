@@ -248,6 +248,10 @@ public class hit : MonoBehaviour
             {
                 if (obj != null)
                 {
+                    float currentSpeed = (obj == gameobject38 || obj == gameobject39) ? 10f : speed;
+
+                    obj.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
+
                     obj.transform.Translate(speed * Time.deltaTime, 0, 0);
                     if (obj.transform.position.x >= end)
                     {
