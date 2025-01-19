@@ -10,12 +10,23 @@ public class Title : MonoBehaviour
     [SerializeField]
     private Selectable firstSelected = null;
 
+    public static int scenecount = 0;
+
+    public GameObject Object1;
+    public GameObject Object2;
+    public GameObject Object3;
+
 
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         firstSelected.Select();
+        countobj1();
+        countobj2();
+        countobj3();
+        scenecount = PlayerPrefs.GetInt("scenecount", 0);
+
     }
 
     public void LoadNextScene()
@@ -31,5 +42,50 @@ public class Title : MonoBehaviour
     public void LoadNextScene3()
     {
         SceneManager.LoadScene("game3");
+    }
+
+    private void countobj1()
+    {
+        if (Object1 != null)
+        {
+            if (scenecount == 1)
+            {
+                Object1.SetActive(true);
+            }
+            else
+            {
+                Object1.SetActive(false);
+            }
+        }
+    }
+
+    private void countobj2()
+    {
+        if (Object2 != null)
+        {
+            if (scenecount == 2)
+            {
+                Object2.SetActive(true);
+            }
+            else
+            {
+                Object2.SetActive(false);
+            }
+        }
+    }
+
+    private void countobj3()
+    {
+        if (Object3 != null)
+        {
+            if (scenecount == 3)
+            {
+                Object3.SetActive(true);
+            }
+            else
+            {
+                Object3.SetActive(false);
+            }
+        }
     }
 }

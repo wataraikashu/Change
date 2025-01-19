@@ -169,6 +169,8 @@ public class Chara : MonoBehaviour
     public static void NextScene()
     {
         scenecount++;
+        PlayerPrefs.SetInt("scenecount", scenecount);
+        PlayerPrefs.Save();
         if (scenecount >= 3)
         {
             SceneManager.LoadScene("Title1");
