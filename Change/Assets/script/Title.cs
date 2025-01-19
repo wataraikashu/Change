@@ -14,7 +14,6 @@ public class Title : MonoBehaviour
 
     public GameObject Object1;
     public GameObject Object2;
-    public GameObject Object3;
 
 
     void Start()
@@ -24,7 +23,6 @@ public class Title : MonoBehaviour
         firstSelected.Select();
         countobj1();
         countobj2();
-        countobj3();
         scenecount = PlayerPrefs.GetInt("scenecount", 0);
 
     }
@@ -70,21 +68,6 @@ public class Title : MonoBehaviour
             else
             {
                 Object2.SetActive(false);
-            }
-        }
-    }
-
-    private void countobj3()
-    {
-        if (Object3 != null)
-        {
-            if (scenecount == 3)
-            {
-                Object3.SetActive(true);
-            }
-            else
-            {
-                Object3.SetActive(false);
             }
         }
     }
